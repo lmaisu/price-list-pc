@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price List PC-Zone</title>
+    <style>
+        body {
+            font-family: 'Agrandir Grand';
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        h1 {
+            color: #ffb800;
+            font-size: 5vw;
+            margin-bottom: 20px;
+        }
+        .container {
+            width: 100%;
+            max-width: 1080px;
+            padding: 20px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+        .row {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .ticket {
+            position: relative;
+            background-color: #333333;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 15px;
+            width: 50%;
+            max-width: 300px;
+            box-sizing: border-box;
+            text-align: center;
+        }
+        .ticket::before,
+        .ticket::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 40px;
+            background-color: #000000;
+            border-radius: 15px;
+        }
+        .ticket::before {
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .ticket::after {
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .section-title.premium {
+            color: #ff914d;
+        }
+        .section-title.pro {
+            color: #5ce1e6;
+        }
+        .section-title.standard {
+            color: #ffffff;
+        }
+        .price {
+            font-size: 1.7rem;
+            margin: 4px 0;
+        }
+        .price .old-price {
+            color: ;
+            position: relative;
+            display: inline-block;
+        }
+        .price .old-price::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: red;
+            transform: rotate(-15deg);
+        }
+        .special-offer {
+            color: #ffb800;
+            font-size: 2rem;
+            margin-top: -40px;
+        }
+    </style>
+</head>
+<body>
+    <h1>PRICE LIST PC-ZONE</h1>
+    <div class="container">
+        <div class="row">
+            <div class="ticket">
+                <div class="section-title premium">PREMIUM<br>I9 RTX 3090 - 240HZ</div>
+                <div class="price">1 hour <span class="new-price">10₾</span></div>
+                <div class="price">3 hours <span class="new-price">27₾</span> <span class="old-price">30₾</span></div>
+                <div class="price">5 hours <span class="new-price">40₾</span> <span class="old-price">50₾</span></div>
+            </div>
+            <div class="ticket">
+                <div class="section-title pro">PRO<br>I7 RX 6650 XT - 240HZ</div>
+                <div class="price">1 hour <span class="new-price">8₾</span></div>
+                <div class="price">3 hours <span class="new-price">22₾</span> <span class="old-price">24₾</span></div>
+                <div class="price">5 hours <span class="new-price">35₾</span> <span class="old-price">40₾</span></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="ticket">
+                <div class="section-title standard">STANDARD<br>I5 GTX 1060 - 144HZ</div>
+                <div class="price">1 hour <span class="new-price">6₾</span></div>
+                <div class="price">2 hours = <span class="new-price">Free Slushie</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="special-offer">Special Offer: 2 Hours of Gaming = Get a FREE Slushie, Coffee, or Tea</div>
+</body>
+</html>
