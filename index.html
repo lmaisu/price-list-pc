@@ -6,18 +6,18 @@
     <title>Price List PC-Zone</title>
     <style>
         body {
-    font-family: 'Courier New', Courier, monospace;
-    letter-spacing: -1px; /* Adjust spacing between letters */
-    word-spacing: -6px; /* Adjust spacing between words */
-    background-color: #000000;
-    color: #ffffff;
-    margin: 0;
-    padding: 0;
-    text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+            letter-spacing: -1px;
+            word-spacing: -6px;
+            background-color: #000000;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            text-align: center;
         }
         h1 {
             color: #ffb800;
-            font-size: 6vw; /* Responsive heading size */
+            font-size: 6vw;
             margin-bottom: 20px;
         }
         .container {
@@ -34,44 +34,48 @@
         }
         .ticket {
             position: relative;
-            background-color: #121212;
-            padding: 30px;
-            border-radius: 15px;
-            margin: 2px;
-            width: 90%; /* Optimized for mobile width */
+            width: 90%;
             max-width: 300px;
-            box-sizing: border-box;
-            text-align: center;
-            transform: rotateY(90deg); /* Start rotated */
-            animation: flipIn 1s ease-out forwards; /* Animation applied */
+            height: 200px;
+            margin: 10px;
+            perspective: 1000px; /* For 3D effect */
         }
-        .ticket:nth-child(1) {
-            animation-delay: 0s; /* No delay for the first ticket */
+        .ticket-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
         }
-        .ticket:nth-child(2) {
-            animation-delay: 0.3s; /* Slight delay for the second ticket */
+        .ticket:hover .ticket-inner {
+            transform: rotateY(180deg);
         }
-        .ticket:nth-child(3) {
-            animation-delay: 0.6s; /* Slight delay for the third ticket */
-        }
-        .ticket::before,
-        .ticket::after {
-            content: '';
+        .ticket-front,
+        .ticket-back {
             position: absolute;
-            width: 80px;
-            height: 40px;
-            background-color: #000000;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
             border-radius: 15px;
+            padding: 20px;
+            box-sizing: border-box;
         }
-        .ticket::before {
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
+        .ticket-front {
+            background-color: #121212;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
         }
-        .ticket::after {
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
+        .ticket-back {
+            background-color: #1f1f1f;
+            color: #ff914d;
+            transform: rotateY(180deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            font-size: 16px;
         }
         .section-title {
             font-size: 4vw;
@@ -88,8 +92,7 @@
         }
         .price {
             font-size: 3.5vw;
-            margin: 4px 0
-            
+            margin: 4px 0;
         }
         .price .old-price {
             color: ;
@@ -105,7 +108,7 @@
             height: 2px;
             background-color: red;
             transform: rotate(-25deg);
-      }
+        }
         .price .new-price {
             color: #ff914d;
         }
@@ -114,16 +117,6 @@
             font-size: 4vw;
             margin-top: -10px;
         }
-
-        /* Animation */
-        @keyframes flipIn {
-            0% {
-                transform: rotateY(90deg); /* Start fully rotated */
-            }
-            100% {
-                transform: rotateY(0); /* End at normal position */
-            }
-        }
     </style>
 </head>
 <body>
@@ -131,23 +124,44 @@
     <div class="container">
         <div class="row">
             <div class="ticket">
-                <div class="section-title premium">PREMIUM<br>I9 RTX 3090 - 240HZ</div>
-                <div class="price">1 hour <span class="new-price">10₾</span></div>
-                <div class="price">3 hours <span class="new-price">27₾</span> <span class="old-price">30₾</span></div>
-                <div class="price">5 hours <span class="new-price">40₾</span> <span class="old-price">50₾</span></div>
+                <div class="ticket-inner">
+                    <div class="ticket-front">
+                        <div class="section-title premium">PREMIUM<br>I9 RTX 3090 - 240HZ</div>
+                        <div class="price">1 hour <span class="new-price">10₾</span></div>
+                        <div class="price">3 hours <span class="new-price">27₾</span> <span class="old-price">30₾</span></div>
+                        <div class="price">5 hours <span class="new-price">40₾</span> <span class="old-price">50₾</span></div>
+                    </div>
+                    <div class="ticket-back">
+                        <p>Intel i9-11900K<br>RTX 3090<br>32GB DDR4 RAM<br>240Hz Monitor</p>
+                    </div>
+                </div>
             </div>
             <div class="ticket">
-                <div class="section-title pro">PRO<br>I7 RX 6650 XT - 240HZ</div>
-                <div class="price">1 hour <span class="new-price">8₾</span></div>
-                <div class="price">3 hours <span class="new-price">22₾</span> <span class="old-price">24₾</span></div>
-                <div class="price">5 hours <span class="new-price">35₾</span> <span class="old-price">40₾</span></div>
+                <div class="ticket-inner">
+                    <div class="ticket-front">
+                        <div class="section-title pro">PRO<br>I7 RX 6650 XT - 240HZ</div>
+                        <div class="price">1 hour <span class="new-price">8₾</span></div>
+                        <div class="price">3 hours <span class="new-price">22₾</span> <span class="old-price">24₾</span></div>
+                        <div class="price">5 hours <span class="new-price">35₾</span> <span class="old-price">40₾</span></div>
+                    </div>
+                    <div class="ticket-back">
+                        <p>Intel i7-12700F<br>RX 6650 XT<br>16GB DDR4 RAM<br>240Hz Monitor</p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="ticket">
-                <div class="section-title standard">STANDARD<br>I5 GTX 1060 - 144HZ</div>
-                <div class="price">1 hour <span class="new-price">6₾</span></div>
-                <div class="price">2 hours = <span class="new-price">Free Slushie</span></div>
+                <div class="ticket-inner">
+                    <div class="ticket-front">
+                        <div class="section-title standard">STANDARD<br>I5 GTX 1060 - 144HZ</div>
+                        <div class="price">1 hour <span class="new-price">6₾</span></div>
+                        <div class="price">2 hours = <span class="new-price">Free Slushie</span></div>
+                    </div>
+                    <div class="ticket-back">
+                        <p>Intel i5-10400<br>GTX 1060<br>16GB DDR4 RAM<br>144Hz Monitor</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
